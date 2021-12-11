@@ -1,6 +1,5 @@
 package com.devsuperior.dslearnbds.entities;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -26,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "tb_user")
-public class User implements UserDetails, Serializable {
+public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -160,5 +159,9 @@ public class User implements UserDetails, Serializable {
     @Override
     public boolean isAccountNonLocked() {
         return true;
+    }
+
+    public boolean hasRole(String nameRole) {
+        return roles.stream().filter(x -> x.getAuthority().equals(nameRole)).findFirst().isPresent();
     }
 }
