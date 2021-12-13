@@ -73,7 +73,5 @@ public class EnrollmentPK implements Serializable {
         } else if (!user.equals(other.user))
             return false;
         return true;
-    }
-
-    
+    }    
 }
