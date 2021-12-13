@@ -63,10 +63,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             .inMemory()
             .withClient(clientId)
             .secret(passwordEncoder.encode(clientSecret))
-            .authorizedGrantTypes("password", "refresh_token")
             .scopes("read", "write")
-            .authorizedGrantTypes("password")
-            .accessTokenValiditySeconds(jwtDuration); // 1 day
+            .authorizedGrantTypes("password", "refresh_token")
+            .accessTokenValiditySeconds(jwtDuration) // 1 day
+            .refreshTokenValiditySeconds(jwtDuration); // 1 day
     }
     
     @Override
